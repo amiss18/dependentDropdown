@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+
+            <trans-unit id="title.home">
+                <source>title.home</source>
+                <target>Accueil</target>
+            </trans-unit>
+
+            <trans-unit id="title.contact_list">
+                <source>title.contact_list</source>
+                <target>Liste des contacts</target>
+            </trans-unit>
+            <trans-unit id="title.edit_contact">
+                <source>title.edit_contact</source>
+                <target>Modifier le contact </target>
+            </trans-unit>
+            <trans-unit id="title.add_contact">
+                <source>title.add_contact</source>
+                <target>Ajouter un contact</target>
+            </trans-unit>
+
+            <!-- ============= contact ================-->
+             <trans-unit id="title.id">
+                <source>title.id</source>
+                <target>Identifiant contact</target>
+            </trans-unit>
+             <trans-unit id="title.fullname">
+                <source>title.fullname</source>
+                <target>Nom</target>
+            </trans-unit>
+
+             <trans-unit id="title.phone">
+                <source>title.phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+             <trans-unit id="title.city">
+                <source>title.city</source>
+                <target>Ville</target>
+            </trans-unit>
+
+            <trans-unit id="title.country">
+                <source>title.country</source>
+                <target>Région</target>
+            </trans-unit>
+            <trans-unit id="title.department">
+                <source>title.department</source>
+                <target>Département</target>
+            </trans-unit>
+
+            <trans-unit id="form.city">
+                <source>form.city</source>
+                <target>Sélectionnez votre ville</target>
+            </trans-unit>
+            <trans-unit id="form.country">
+                <source>form.country</source>
+                <target>Sélectionnez votre région</target>
+            </trans-unit>
+            <trans-unit id="form.department">
+                <source>form.department</source>
+                <target>Sélectionnez votre département</target>
+            </trans-unit>
+
+
+            <!-- =========== actions ================ -->
+             <trans-unit id="action.back_to_list">
+                <source>action.back_to_list</source>
+                <target>Retour à la liste des contacts</target>
+            </trans-unit>
+
+             <trans-unit id="delete_contact_modal.title">
+                <source>delete_contact_modal.title</source>
+                <target>Etes-vous sûr de supprimer ce contact?</target>
+            </trans-unit>
+
+             <trans-unit id="action.add_contact">
+                <source>action.add_contact</source>
+                <target>Enregistrer</target>
+            </trans-unit>
+
+             <trans-unit id="action.delete_contact">
+                <source>action.delete_contact</source>
+                <target>Supprimer le contact</target>
+            </trans-unit>
+
+            <trans-unit id="action.show_contact">
+                <source>action.show_contact</source>
+                <target>Lire</target>
+            </trans-unit>
+             <trans-unit id="action.edit_contact">
+                <source>action.edit_contact</source>
+                <target>Modifier</target>
+            </trans-unit>
+
+            <trans-unit id="contact.created_successfully">
+                <source>contact.created_successfully</source>
+                <target>Contact crée avec succès!</target>
+            </trans-unit>
+
+            <trans-unit id="action.successfully">
+                <source>action.successfully</source>
+                <target>Action  réalisée avec succès!</target>
+            </trans-unit>
+
+
+
+        </body>
+    </file>
+</xliff>
