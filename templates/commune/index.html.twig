@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commune index{% endblock %}
+
+{% block body %}
+    <h1>Commune index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lon</th>
+                <th>Lat</th>
+                <th>Nom</th>
+                <th>CodeDepartement</th>
+                <th>CodeRegion</th>
+                <th>Population</th>
+                <th>CodesPostaux</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commune in communes %}
+            <tr>
+                <td>{{ commune.id }}</td>
+                <td>{{ commune.lon }}</td>
+                <td>{{ commune.lat }}</td>
+                <td>{{ commune.nom }}</td>
+                <td>{{ commune.codeDepartement }}</td>
+                <td>{{ commune.codeRegion }}</td>
+                <td>{{ commune.population }}</td>
+                <td>{{ commune.codesPostaux ? commune.codesPostaux|join(', ') : '' }}</td>
+                <td>
+                    <a href="{{ path('commune_show', {'id': commune.id}) }}">show</a>
+                    <a href="{{ path('commune_edit', {'id': commune.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('commune_new') }}">Create new</a>
+{% endblock %}

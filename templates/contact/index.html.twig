@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact index{% endblock %}
+
+{% block body %}
+
+
+    <div class="card">
+        <div class="card-header">
+            <h1 class="h2 card-title text-center">{{ 'title.contact_list' | trans }}</h1>
+        </div>
+        <div class="card-body">
+            {#<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>#}
+            <div class="card-text">
+                <table class=" table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>{{ 'title.fullname' | trans }}</th>
+                        <th>{{ 'title.phone' | trans }}</th>
+                        <th>{{ 'title.city' | trans }}</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for contact in contacts %}
+                        <tr>
+                            <td>{{ contact.id }}</td>
+                            <td>{{ contact.nom }}</td>
+                            <td>{{ contact.tel }}</td>
+                            <td>{{ contact.commune }}</td>
+                            <td>
+                                <a class="btn btn-info" href="{{ path('contact_show', {'id': contact.id}) }}"><i
+                                            class="far fa-eye-slash"></i>{{ 'action.show_contact' | trans }}</a>
+                                <a class="btn btn-primary" href="{{ path('contact_edit', {'id': contact.id}) }}"><i
+                                            class="fa fa-edit"></i>{{ 'action.edit_contact' | trans }}</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+            <a class="btn btn-dark btn-lg card-link" href="{{ path('contact_new') }}"><i
+                        class="fa fa-plus"></i> {{ 'title.add_contact'|trans }}</a>
+        </div>
+    </div>
+
+
+    {#<h1>{{  'title.contact_list' | trans }}</h1>#}
+
+
+
+{% endblock %}

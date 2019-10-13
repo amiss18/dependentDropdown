@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+
+
+{% block main %}
+
+
+    {#=================================================#}
+    <div style=" ">
+        <div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="{{ asset('img/profile.jpg') }}" alt=""/>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                            <h5>
+                                {{ contact.nom }}
+                            </h5>
+                            {#<h6>
+                                profession
+                            </h6>#}
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-primary" href="{{ path('contact_edit', {'id': contact.id}) }}"><i class="fa fa-edit"></i> {{ 'action.edit_contact' | trans }}</a><br><br>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p> <a href="https://www.facebook.com" title="profile fb">
+                                    <i class="fa fa-facebook fa-2x" aria-hidden="true"></i>
+                                </a>&nbsp;&nbsp; &nbsp;&nbsp;
+
+                                <a href="#" title="Symfony Twitter">
+                                    <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>{{ 'title.id' | trans }}</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{ contact.id }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>{{ 'title.fullname' | trans }}</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{ contact.nom }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>{{ 'title.phone' | trans }}</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{ contact.tel ? contact.tel : '-' }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>{{ 'title.city' | trans }}</label>
+                                    </div>
+                                    {%  set cp = contact.commune.codesPostaux | slice(1,3)| join(',') %}
+                                    <div class="col-md-6">
+                                        <p>{{ cp  ~ ' ' ~contact.commune }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>{{ 'title.department' | trans }}</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{ contact.commune.departement }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>{{ 'title.country' | trans }}</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>{{ contact.commune.departement.region }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <hr>
+                    {{ include('contact/_delete_form.html.twig') }}
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    {#=================================================#}
+
+
+    <div>
+        <a href="{{ path('contact_index') }}">{{ 'action.back_to_list' | trans }}</a>
+
+    </div>
+
+
+{% endblock %}
+
+
+{% block sidebar %}
+    {{ parent() }}
+
+{% endblock %}
+
+
+
+
+
+

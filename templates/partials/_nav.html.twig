@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ path('contact_index') }}">{{ 'title.home' | trans }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('contact_new') }}">{{ 'title.add_contact' | trans }}</a>
+        </li>
+
+
+    </ul>
+    <div class="collapse navbar-collapse mr-5 justify-content-end">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.request.locale | upper }}</a>
+                <div class="dropdown-menu">
+                    {% for locale in locales() %}
+                        <a class="dropdown-item {{ (app.request.locale == locale.code )? 'active disabled':''  }}"   href="{{ path('change_locale',{'_locale' : locale.code})}}">{{ locale.name|capitalize }}</a>
+                    {% endfor %}
+
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</nav>
+
+

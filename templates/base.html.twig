@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('css/app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}
+            <header>
+                {% include('partials/_nav.html.twig') %}
+
+            </header>
+        {% endblock %}
+
+        <div class="container body-container">
+            {{ include('partials/_flash_messages.html.twig') }}
+
+            {% block body %}
+                <div class="row">
+                    <div id="main" class="col-sm-9">
+
+
+                        {% block main %}{% endblock %}
+                    </div>
+
+                    <div id="sidebar" class="col-sm-3">
+                        {% block sidebar %}
+                            <div class="section about">
+                                <div class="well well-lg">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, commodi consectetur dignissimos dolor dolorem eligendi excepturi fugiat id, illum ipsam natus nulla omnis quo soluta tenetur, veniam voluptas voluptate voluptatum?
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, commodi consectetur dignissimos dolor dolorem eligendi excepturi fugiat id.?
+                                    </p>
+
+                                </div>
+                            </div>
+                        {% endblock %}
+                    </div>
+
+                </div>
+            {% endblock %}
+        </div>
+
+
+        {% block footer %}
+            {% include('partials/_footer.html.twig') %}
+
+        {% endblock %}
+
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('js/app') }}
+
+        {% endblock %}
+    </body>
+</html>

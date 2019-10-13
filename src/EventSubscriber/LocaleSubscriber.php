@@ -1,10 +1,4 @@
 <?php
-/**
- *  * Created by PhpStorm.
- * User: armel ( @armel.m )
- * Date: 03/10/19
- * Time: 13:15
- */
 
 namespace App\EventSubscriber;
 
@@ -27,6 +21,8 @@ class LocaleSubscriber implements EventSubscriberInterface {
         if (!$request->hasPreviousSession()) {
             return;
         }
+        dump($this->defaultLocale);
+
 
 
         // try to see if the locale has been set as a _locale routing parameter

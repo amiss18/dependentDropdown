@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{  'title.add_contact' | trans }}{% endblock %}
+
+
+{% block main %}
+
+    <div class="card">
+        <h5 class="card-header text-center">{{  'title.add_contact' | trans }}</h5>
+        <div class="card-body">
+            {{ include('contact/_form.html.twig') }}
+
+        </div>
+    </div>
+
+    <div>
+        <a class="btn btn-link" href="{{ path('contact_index') }}"> {{ 'action.back_to_list' | trans }}</a>
+    </div>
+
+
+{% endblock %}
+
+
+{% block sidebar %}
+    {{ parent() }}
+
+{% endblock %}
+
