@@ -1,0 +1,9 @@
+
+
+{{ form_start(form, {'action': path('contact_edit', {'id': contact.id}), 'method': 'POST'}, {'attr': {'novalidate': 'novalidate'}} ) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-success btn-lg"><i class="fa fa-plus"></i> {{ 'action.add_contact'|trans }}</button>
+{{ form_end(form) }}
+
+
+{#{'attr': {'novalidate': 'novalidate'}} )#}

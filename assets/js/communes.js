@@ -15,6 +15,31 @@ import Routing from './routes'
         });
     }
 
+    if($departement.val() ){
+       // $commune.empty()
+
+        const departementId = $departement.val()
+        let routeCommune = Routing.generate('villes_d_un_departement',{ departement: departementId })
+        $.get(routeCommune).then((data) => {
+            //console.log("==ajax dep===" + data )
+
+          $departement.empty()
+
+            $.each(data, function(optVal, text) {
+               // console.log(text.nom + "," +text.id)
+              //  $commune.prepend(`<option value='${text.id}' >${text.nom}</option>`);
+
+                let o = new Option(text.nom, text.id );
+              //  o.selected=true;
+                $('#contact_commune').append(o);
+                // $commune.append(o);
+            });
+
+
+        })
+
+    }
+
 
 
 //recherche des communes correspondant au département sélectionné
@@ -30,12 +55,16 @@ import Routing from './routes'
             type: 'GET',
             success: function (data) {
                 if(data.length ==0 ) alert("Il n'existe aucune ville pour ce département")
-                console.log(data)
 
-                //ajout des communes rétournées par AJAX dans la liste déroulante des communes
-                $response( data, $commune )
+              //  if( data ){
+                  //  $commune.empty()
+                    //ajout des communes rétournées par AJAX dans la liste déroulante des communes
+                    $response( data, $commune )
+               // }
+
             }
         });
+
     });
 
 })()

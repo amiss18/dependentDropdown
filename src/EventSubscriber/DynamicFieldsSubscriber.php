@@ -18,6 +18,7 @@ use App\Entity\Departement;
 use App\Entity\Region;
 use App\Repository\CommuneRepository;
 use App\Repository\DepartementRepository;
+use function dump;
 use function intval;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -59,7 +60,6 @@ class DynamicFieldsSubscriber implements EventSubscriberInterface {
         $form = $event->getForm();
 
 
-
         //soumission du form,on récupère la région
         if (!empty($data["region"])) {
             $this->addDepartementField($form, $data["region"]);
@@ -92,22 +92,42 @@ class DynamicFieldsSubscriber implements EventSubscriberInterface {
          */
         $contact = $event->getData();
         $commune = $contact == null ? null : $contact->getCommune();
+        //dump($data);
 
 
         if ($commune) {
             $departement = $commune ? $commune->getDepartement() : null;
+            /**
+             * @var Region $region
+             */
             $region = $departement ? $departement->getRegion() : null;
 
-            //sélection du département correspondant au contact
-          //  $form->get('departement')->setData($departement);
-            $this->addDepartementField($form, $region->getId(), $departement);
+
+            $formOptions = [
+                'class' => Departement::class,
+
+                'choice_label' => 'nom',
+                'data' => $departement ? $departement : null,
+                'mapped' => false,
+                'required' => false,
+                //'choices' => $region ? $region->getDepartements() :[],
+                'placeholder' => '-- Sélectionnez votre département --',
+
+                'query_builder' => function (DepartementRepository $departementRepository) use ($region) {
+                    return $departementRepository->findByDepBy($region->getId());
+                },
+            ];
+
+
+            $form->add('departement', EntityType::class, $formOptions);
+
+
             $form->add('commune', EntityType::class, [
                 'class' => Commune::class,
                 'choices' => $departement->getCommunes(),
             ]);
 
 
-          //  $form->get('commune')->setData($commune);
             //sélection de la région correspondant au contact
             $form->get('region')->setData($region);
 
@@ -122,12 +142,12 @@ class DynamicFieldsSubscriber implements EventSubscriberInterface {
      * @param FormInterface $form
      * @param Departement|null $departement
      */
-    private function addDepartementField(FormInterface $form, ?int $region = null, ?Departement $departement=null) {
+    private function addDepartementField(FormInterface $form, ?int $region = null, ?Departement $departement = null) {
 
         $formOptions = [
             'class' => Departement::class,
             'choice_label' => 'nom',
-            'data' => $departement ? $departement:null,
+            'data' => $departement ? $departement : null,
             'mapped' => false,
             'required' => false,
             'placeholder' => '-- Sélectionnez votre département --',

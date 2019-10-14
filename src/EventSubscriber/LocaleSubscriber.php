@@ -21,7 +21,7 @@ class LocaleSubscriber implements EventSubscriberInterface {
         if (!$request->hasPreviousSession()) {
             return;
         }
-        dump($this->defaultLocale);
+//        dump($this->defaultLocale);
 
 
 

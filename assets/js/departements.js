@@ -10,8 +10,12 @@ $(function () {
 
     //peuplement des champs select (region, département)
     let $response = (data, $select) => {
+
         $.each(data, function (optVal, text) {
-            $select.prepend(`<option value='${text["id"]}' >${text["nom"]}</option>`);
+            let o = new Option(text.nom, text.id);
+            // o.selected=true;
+            $($select).append(o);
+
         });
     }
 
@@ -19,44 +23,55 @@ $(function () {
     if ($region.val()) {
         const value = $region.val()
 
+
         let departement_route = Routing.generate("departements_d_une_region", {region: value});
+
 
         // $.get(`http://127.0.0.1:8000/departements/${value}`).then( (data)=>{
         $.get(departement_route).then((data) => {
+
+            // $departement.empty()
             $response(data, $departement)
         })
+
+
 
     }
 
 
-    // $region .change(function() {
     $(document).on('change', ' #contact_region', function () {
 
         let $field = $(this)
         $commune.empty()
-        $departement.empty()
+        // $departement.empty()
+
+        const value = $region.val()
 
 
-        //  console.log("dep select")
         let $regionField = $('#contact_region')
         let $form = $field.closest('form')
 
-        // Données à envoyer via Ajax
-        let data = {}
-        data[$region.attr('name')] = $region.val();
-        data[$departement.attr('name')] = $departement.val();
-        // soummission du form avec POST et envoie de la région en AJAX
-        $.post($form.attr('action'), data).then(function (data) {
+        let departement_route = Routing.generate("departements_d_une_region", {region: value});
 
 
-            //on récupère le champ select retourné dans la réponse AJAX
-            let $newSelect = $(data).find('#contact_departement')
+        // $.get(`http://127.0.0.1:8000/departements/${value}`).then( (data)=>{
+        $.get(departement_route).then((data) => {
 
-            //on remplace le champ select du département par le nouveau champ renvoyé par AJAX
-            $('#contact_departement').replaceWith($newSelect)
+            console.log("region select =" + $departement.val())
+            $departement.empty()
+            $departement.append(new Option("Sélectionnez votre département", ""));
 
 
+            $response(data, $departement);
+
+
+            console.log(data)
         })
+
+
     });
+
+
+
 
 })
