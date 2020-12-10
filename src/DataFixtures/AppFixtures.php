@@ -4,7 +4,8 @@ namespace App\DataFixtures;
 
 use App\Entity\Commune;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\Persistence\ObjectManager;
+//use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use App\Entity\Contact;
 use Faker\Factory as Faker;
 use function rand;
@@ -14,9 +15,8 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        // $product = new Product();
 
-        $villes=[ "Paris", "Lille", "Lyon",  "Rennes", "Nice", "Bordeaux", "Toulouse"];
+        $villes=[ "Paris", "Lille", "Lyon",  "Rennes", "Nantes", "Nice", "Bordeaux", "Toulouse"];
 
 
         $faker = Faker::create('fr_FR');
