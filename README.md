@@ -28,3 +28,11 @@ $ php bin/console server:run
 ``` 
 
 L'application démarre sur <http://localhost:8000>
+
+
+Les commandes suivantes permettent de charger les régions, les départartements et les villes depuis l'api:
+=========================================================================================================
+
+ php bin/console app:geo region
+ php bin/console app:geo departement
+ php bin/console app:geo ville
