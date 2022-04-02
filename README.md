@@ -1,6 +1,10 @@
 Listes déroulantes liées dynamiques en Symfony 4.3 et AJAX
 ==========================================================
 
+[![Build Status](https://app.travis-ci.com/amiss18/dependentDropdown.svg?branch=master)](https://app.travis-ci.com/amiss18/dependentDropdown)
+
+
+
 Liaison de plusieurs select liés.
 En déroulant le select des régions, les départements associés sont chargés dans la 2ème liste.
 De même en sélectionnant un département, les communes de ce dernier sont chargées dans le select
